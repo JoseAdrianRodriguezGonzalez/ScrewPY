@@ -1,0 +1,15 @@
+Metadata-Version: 2.2
+Name: ScrewPY
+Version: 0.0.1
+Summary: A library that enhances and makes easier the use of screws on robotics
+Home-page: package URL
+Author: Murillo Mario Alberto,Rodríguez González José Adrián
+Author-email: ja.rodriguez.g@ugto.mx, correoMurillo
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: author-email
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-python
+Dynamic: summary
