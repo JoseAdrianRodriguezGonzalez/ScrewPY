@@ -125,3 +125,38 @@ class Screw(Vectors):
             return S1.w*S2.v+S2.w*S1.v
     #So at this point I have to put other class, called PLÜCKER COORDINATES
 class PluckerScrew(Screw):
+    def __init__(self, u,p,paso,type_screw="P"):
+        self.u= u if isinstance(u,Vectors) else Vectors(*u)
+        self.type_screw=type_screw
+        self.p=p if isinstance(p,Vectors) else Vectors(*p)
+        self.paso=paso
+        if type_screw=="P":
+            super().__init__(Vectors(0,0,0),self.u)
+        elif type_screw=="R":
+            V1=(self.p^self.u)+(self.paso*self.u)
+            super().__init__(self.u,V1)
+#First, I must understand the Plucker coordinates.
+#Therefore, check the functions described on maple
+class MatrixScrew(PluckerScrew):
+    def __init__(self,i):
+        self.i=i
+        self.matrix=[[] for _ in range(i)]
+    def __setitem__(self, index,screw):
+        if index>=self.i:
+            raise ValueError(f"Columna fuera de rango{self.i-1}")
+        self.matrix[index]=screw
+    def __len__(self):
+        return len(self.matrix)
+    #enables the funciton to obtain values due an index
+    def __getitem__(self,index):
+        return self.matrix[index]
+    def __repr__(self):
+        return "\n".join([str(col) for col in self.matrix])
+    def __iter__(self):
+        return iter(self.matrix)
+    @classmethod
+    def reciproco(self,max_index,screw,matrx_screw):
+        sum=0
+        for k in range(max_index):
+            sum+=PluckerScrew.KleinColineality(screw,matrx_screw[k])
+        return sum
