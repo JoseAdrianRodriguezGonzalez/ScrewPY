@@ -1,6 +1,22 @@
 class Vectors:
+    """
+    The class vector has:
+    An attribute, that requires a n quantity of elements.
+    Has multiple operator overwritten and owm functions that will let to calculate.
+    The function len() on this object will tell the vector's dimension
+    The vector can be accessed by [], has also can be set with this operator and a value, such has
+    V[0]=8
+    Also, can be iterable, so a loop will pass through all elements of the vector.
+    As a representation by default
+    the operator +, will be applied to two vectors objects to sum both vectors.
+    The operator *, will make
+    """
     #add values at your vector
     def __init__(self,*v):
+        """
+        Constructor for the Vectors class.
+        It requires an n quantity of elements
+        """
         self.v=list(v)
     #Enables the len function for the object
     def __len__(self):
