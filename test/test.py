@@ -1,5 +1,18 @@
-from screw.screw import Screw, Vectors,MatrixScrew,PluckerScrew
+#from screw.screw import Screw, Vectors,MatrixScrew,PluckerScrew
 
+from screw.MatrixScrew import MatrixScrew
+from screw.PluckerScrew import PluckerScrew
+from screw.vector import Vectors
+M1=MatrixScrew(6)
+M1[0]=PluckerScrew([1,1,1],[2,3,4],2,"R")
+M1[1]=PluckerScrew([2,5,7],[1,1,1],2)
+M1[2]=PluckerScrew((2,7,8),[12,3,2],2,"R")
+M1[3]=PluckerScrew(Vectors(2,1,-1),Vectors(-2,5,2),-3,"R")
+M1[4]=PluckerScrew(Vectors(-22,-1,-7),Vectors(-2,-5,1),2)
+M1[5]=PluckerScrew(Vectors(-2,6,-7),Vectors(-2,3,1),4)
+SP=PluckerScrew([1,5,6],[3,42,2],2,"R")
+M2=MatrixScrew.reciproco(6,SP,M1)
+print(M2)
 #v1^v2 cross
 #v1*v2 dot
 #2*v1 scalar
@@ -21,8 +34,8 @@ from screw.screw import Screw, Vectors,MatrixScrew,PluckerScrew
 
 
 # Example usage:
-u = Vectors(1, 0, 0)
-p= Vectors(0, 1, 0)
+#u = Vectors(1, 0, 0)
+#p= Vectors(0, 1, 0)
 
 # Normal addition uses __add__
 # Using sum(), which calls __radd__ for the 0 initial value:
@@ -40,12 +53,12 @@ p= Vectors(0, 1, 0)
 
 
 #PluckerScrew
-screw_R=PluckerScrew(u,p,2,"R")
-screw_P=PluckerScrew(u,p,2,"P")
-print(screw_R)
-print(screw_P)
-m=MatrixScrew(2)
-m[0]=screw_R
-m[1]=screw_P
-print(Screw.KleinColineality(Screw([0,1,2],[2,5,7]),screw_R))
-print(MatrixScrew.reciproco(len(m),Screw([0,1,2],[2,5,7]),m))
+#screw_R=PluckerScrew(u,p,2,"R")
+#screw_P=PluckerScrew(u,p,2,"P")
+#print(screw_R)
+#print(screw_P)
+#m=MatrixScrew(2)
+#m[0]=screw_R
+#m[1]=screw_P
+#print(Screw.KleinColineality(Screw([0,1,2],[2,5,7]),screw_R))
+#print(MatrixScrew.reciproco(len(m),Screw([0,1,2],[2,5,7]),m))
