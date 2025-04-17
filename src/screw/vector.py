@@ -104,6 +104,19 @@ class Vectors:
     def __rmul__(self,scalar):
         return self.__mul__(scalar)
 
+
+
+    #equality
+    def __eq__(self, v1):
+        if not isinstance(v1,Vectors):
+            return NotImplemented
+        return self.v==v1.v
+    def __neq__(self, v1):
+        if not isinstance(v1,Vectors):
+            return NotImplemented
+        return not self.v==v1.v
+
+
     #So at this point I have to put other class, called PLÜCKER COORDINATES
 
 #First, I must understand the Plucker coordinates.
