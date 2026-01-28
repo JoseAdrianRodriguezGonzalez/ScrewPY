@@ -22,3 +22,5 @@ class MatrixScrew(PluckerScrew):
         for k in range(max_index):
             sum+=PluckerScrew.KleinColineality(screw,matrx_screw[k])
         return sum
+#J^Tdelta delta=[0_{3x3},I_{3x3}
+#                I_{3x3},0_{3x3}]

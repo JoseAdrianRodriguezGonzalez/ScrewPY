@@ -1,18 +1,32 @@
 #from screw.screw import Screw, Vectors,MatrixScrew,PluckerScrew
 
-from screw.MatrixScrew import MatrixScrew
-from screw.PluckerScrew import PluckerScrew
+
+import unittest
 from screw.vector import Vectors
-M1=MatrixScrew(6)
-M1[0]=PluckerScrew([1,1,1],[2,3,4],2,"R")
-M1[1]=PluckerScrew([2,5,7],[1,1,1],2)
-M1[2]=PluckerScrew((2,7,8),[12,3,2],2,"R")
-M1[3]=PluckerScrew(Vectors(2,1,-1),Vectors(-2,5,2),-3,"R")
-M1[4]=PluckerScrew(Vectors(-22,-1,-7),Vectors(-2,-5,1),2)
-M1[5]=PluckerScrew(Vectors(-2,6,-7),Vectors(-2,3,1),4)
-SP=PluckerScrew([1,5,6],[3,42,2],2,"R")
-M2=MatrixScrew.reciproco(6,SP,M1)
-print(M2)
+
+class TestVectorFunctions(unittest.TestCase):
+
+    def test_add_vectors(self):
+        self.assertEqual(Vectors([1, 2])+Vectors([3, 4]), Vectors([4, 6]))
+        self.assertEqual(Vectors([0, 0])+Vectors([0, 0]), Vectors([0, 0]))
+        self.assertNotEqual(Vectors([1, 2])+Vectors([3, 4]), [1, 1])  # prueba negativa
+
+if __name__ == "__main__":
+    unittest.main()
+
+# from screw.MatrixScrew import MatrixScrew
+# from screw.PluckerScrew import PluckerScrew
+# from screw.vector import Vectors
+# M1=MatrixScrew(6)
+# M1[0]=PluckerScrew([1,1,1],[2,3,4],2,"R")
+# M1[1]=PluckerScrew([2,5,7],[1,1,1],2)
+# M1[2]=PluckerScrew((2,7,8),[12,3,2],2,"R")
+# M1[3]=PluckerScrew(Vectors(2,1,-1),Vectors(-2,5,2),-3,"R")
+# M1[4]=PluckerScrew(Vectors(-22,-1,-7),Vectors(-2,-5,1),2)
+# M1[5]=PluckerScrew(Vectors(-2,6,-7),Vectors(-2,3,1),4)
+# SP=PluckerScrew([1,5,6],[3,42,2],2,"R")
+# M2=MatrixScrew.reciproco(6,SP,M1)
+# print(M2)
 #v1^v2 cross
 #v1*v2 dot
 #2*v1 scalar
